@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Pet Theory | Smart Dog Collar Built for India</title>
+  <meta name="description" content="A smart collar that shows you where your dog is, how they're doing, and what to feed them — built for India, not imported to it.">
+  <meta name="theme-color" content="#FAF4EB">
+
+  <!-- Google Fonts: Poppins, Plus Jakarta Sans, Caveat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"></div>
+
+  <!-- Top Announcement Bar -->
+  <aside class="top-notice-bar" aria-label="Announcement">
+    <span>🐾 <strong>Batch #1 Production Drop:</strong> 384/500 collars reserved across Bengaluru, Mumbai &amp; Delhi-NCR</span>
+    <a href="#waitlist">Claim Yours &rarr;</a>
+  </aside>
+
+  <!-- Sticky Site Navigation -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-link" aria-label="The Pet Theory Home">
+          <img src="assets/logo.png" alt="The Pet Theory Logo" class="brand-logo-img">
+          <div class="brand-text-block">
+            <span class="brand-name">the pet <span class="script">Theory</span></span>
+            <span class="brand-tagline">Engineered for India</span>
+          </div>
+        </a>
+
+        <nav class="nav-menu" aria-label="Main Navigation">
+          <a href="#why-india">Why India</a>
+          <a href="#the-collar">The Collar</a>
+          <a href="#vet-diet">Diet Engine</a>
+          <a href="#plans">Plans</a>
+          <a href="#vets">For Vets</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <div class="nav-actions">
+          <a href="#waitlist" class="btn btn-primary">Reserve Spot &rarr;</a>
+          <button class="mobile-toggle-btn" id="mobile-menu-toggle" aria-label="Open Navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Drawer -->
+      <div class="mobile-drawer" id="mobile-drawer">
+        <a href="#why-india">Why India</a>
+        <a href="#the-collar">The Collar</a>
+        <a href="#vet-diet">Diet Engine</a>
+        <a href="#plans">Plans</a>
+        <a href="#vets">For Vets &amp; Breeders</a>
+        <a href="#faq">FAQ</a>
+        <a href="#waitlist" class="btn btn-primary btn-block">Reserve Your Collar &rarr;</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+      <div class="hero-glow-sphere"></div>
+      <div class="container">
+        <div class="hero-grid">
+          
+          <!-- Left Column: Copy & CTAs -->
+          <div class="hero-content">
+            <div class="pill-badge">
+              <span class="pulse-dot"></span>
+              <span>Engineered for Indian Climate &amp; Breeds</span>
+            </div>
+
+            <h1 class="hero-title">
+              Never Lose Sight of <span class="highlight">Who Matters.
+                <svg viewBox="0 0 240 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 9C50 3 190 2 238 9" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </h1>
+
+            <p class="hero-subtitle">
+              A smart collar that shows you where your dog is, how they're doing, and what to feed them — built for India, not imported to it.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="#waitlist" class="btn btn-primary btn-lg">Reserve Your Spot &rarr;</a>
+              <a href="#the-collar" class="btn btn-secondary btn-lg">Inspect Hardware &darr;</a>
+            </div>
+
+            <div class="hero-guarantee">
+              <span>🛡️</span>
+              <span>Strictly zero spam &bull; Batch #1 priority rollout with 1-year complimentary vet diet access</span>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Buddy the Golden Retriever -->
+          <div class="hero-media-wrapper">
+            <div class="hero-dog-card">
+              <img src="assets/dog-hero.jpg" alt="Buddy the Golden Retriever wearing The Pet Theory Smart Collar" class="hero-dog-img">
+
+              <!-- Glowing pulsing LED replicating hardware in photo -->
+              <div class="collar-led-indicator" title="Collar Status LED (Active)"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT HARDWARE SHOWCASE (HOTSPOTS) -->
+    <section class="product-showcase-section" id="the-collar">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="pill-badge">
+            <span class="pulse-dot orange"></span>
+            <span>Hardware Deep-Dive</span>
+          </div>
+          <h2 class="section-title">Engineered for Indian Extremes.</h2>
+          <p class="section-desc">Tap any glowing orange hotspot on the collar to inspect the custom hardware details.</p>
+        </div>
+
+        <div class="mockup-stage">
+          <div style="position: relative; display: inline-block; max-width: 960px; width: 100%;">
+            <img src="assets/collar-mockup.png" alt="The Pet Theory Collar Hardware 3D Mockup" class="collar-mockup-img">
+
+            <!-- Interactive Hotspot Pins -->
+            <button class="hotspot-pin hotspot-pod" data-spot="pod" aria-label="Inspect Tracker Module">1</button>
+            <button class="hotspot-pin hotspot-stitch" data-spot="stitch" aria-label="Inspect Nylon Stitching">2</button>
+            <button class="hotspot-pin hotspot-tag" data-spot="tag" aria-label="Inspect Personalized Tag">3</button>
+            <button class="hotspot-pin hotspot-buckle" data-spot="buckle" aria-label="Inspect Clasp">4</button>
+          </div>
+
+          <!-- Dynamic Hotspot Description Card -->
+          <div class="hotspot-active-box" id="hotspot-detail-box">
+            <h4>📍 GPS &amp; Bluetooth Tracker Module</h4>
+            <p>Houses the GPS and Bluetooth antenna in a compact, matte-black weatherproof shell — small enough to sit flush on the collar without unbalancing smaller breeds. The tracker handles pairing and manual location pings; the status LED shows green for active tracking, amber for charging or low battery.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY INDIA SECTION -->
+    <section class="why-india-section" id="why-india">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="pill-badge">
+            <span>Why We Built Different</span>
+          </div>
+          <h2 class="section-title">Built for Indian Realities, <span class="orange-text">Not Western Manuals.</span></h2>
+          <p class="section-desc">
+            Imported collars overheat in May, drain battery on spotty 2G towers, and demand exorbitant USD recurring fees. We solved this from scratch.
+          </p>
+        </div>
+
+        <div class="grid-3">
+          <!-- Card 1: Heat-Tested Design -->
+          <article class="feature-card">
+            <div>
+              <div class="card-icon-header">
+                <div class="card-icon-wrap">☀️</div>
+                <span class="tag-badge orange">Live Location Tracking</span>
+              </div>
+              <h3>Real-Time Live Location Tracking</h3>
+              <p class="card-subtitle">Built and tested for Indian summers</p>
+              <p class="card-body">
+                Engineered to provide realtime location of your pet, along with ventilated silicone strap prevents skin chafing and heat rash.
+              </p>
+            </div>
+            <ul class="card-bullets">
+              <li><span class="check">&#10003;</span> Live GPS updates every few seconds, not minutes</li>
+              <li><span class="check">&#10003;</span> Escape alerts the moment they leave your safe zone</li>
+              <li><span class="check">&#10003;</span> Accurate tracking even in remote locations</li>
+              <li><span class="check">&#10003;</span> IP68 monsoon puddle &amp; mud submersion</li>
+            </ul>
+          </article>
+
+          <!-- Card 2: 24/7 Health Tracker -->
+          <article class="feature-card">
+            <div>
+              <div class="card-icon-header">
+                <div class="card-icon-wrap">💳</div>
+                <span class="tag-badge green">24/7 Health Monitoring</span>
+              </div>
+              <h3>24/7 health tracker</h3>
+              <p class="card-subtitle">A tracker that keeps check of your pet's health</p>
+              <p class="card-body">
+                Track how your pet is feeling and understand problems it may not even be able to convey!
+              </p>
+            </div>
+            <ul class="card-bullets">
+              <li><span class="check">&#10003;</span> Tracks activity levels, rest patterns, and unusual behavior shifts</li>
+              <li><span class="check">&#10003;</span> Flags early signs of discomfort before your next vet visit</li>
+              <li><span class="check">&#10003;</span> Weekly health summary sent straight to your phone</li>
+            </ul>
+          </article>
+
+          <!-- Card 3: Vet-Reviewed Diet -->
+          <article class="feature-card">
+            <div>
+              <div class="card-icon-header">
+                <div class="card-icon-wrap">🩺</div>
+                <span class="tag-badge orange">Veterinary Nutritionist Formulated</span>
+              </div>
+              <h3>Vet-Reviewed Diet</h3>
+              <p class="card-subtitle">Breed- and weight-specific guidance</p>
+              <p class="card-body">
+                Formulated alongside leading Indian veterinary nutritionists. Tailored portions for local diets (including curd-rice, paneer, and fresh Indian proteins) alongside kibble.
+              </p>
+            </div>
+            <ul class="card-bullets">
+              <li><span class="check">&#10003;</span> Customized calorie targets for Indies, Labs, etc.</li>
+              <li><span class="check">&#10003;</span> Monsoon &amp; summer hydration intake alerts</li>
+              <li><span class="check">&#10003;</span> Weight trend curves verified by clinical vets</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE BREED NUTRITION CALCULATOR -->
+    <section class="nutrition-engine-section" id="vet-diet">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="pill-badge">
+            <span class="pulse-dot"></span>
+            <span>Interactive Nutrition Engine</span>
+          </div>
+          <h2 class="section-title">Vet-Reviewed Diet <span class="orange-text">Calculator.</span></h2>
+          <p class="section-desc">Select your dog's breed and weight to preview how The Pet Theory computes precise Indian home-cooked and packaged feed portions.</p>
+        </div>
+
+        <div class="calc-card-container">
+          <div class="calc-grid">
+            <!-- Controls -->
+            <div class="calc-controls">
+              <div>
+                <label class="input-label" for="calc-breed">Select Dog Breed</label>
+                <select id="calc-breed" class="select-input">
+                  <option value="indie">Indie / Desi Dog</option>
+                  <option value="labrador">Labrador Retriever</option>
+                  <option value="golden" selected>Golden Retriever (like Buddy!)</option>
+                  <option value="beagle">Beagle</option>
+                  <option value="germanshepherd">German Shepherd</option>
+                  <option value="shihtzu">Shih Tzu</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="input-label">Dog's Weight: <span id="calc-weight-val" style="color: var(--orange); font-weight: 800;">28 kg</span></label>
+                <input type="range" id="calc-weight" min="4" max="55" value="28" style="width: 100%; accent-color: var(--orange);">
+                <div class="range-display">
+                  <span>4 kg (Small)</span>
+                  <span>25 kg (Medium)</span>
+                  <span>55 kg (Giant)</span>
+                </div>
+              </div>
+
+              <div>
+                <label class="input-label" for="calc-activity">Daily Activity Level</label>
+                <select id="calc-activity" class="select-input">
+                  <option value="1.2">Low (Apartment living, gentle 20m strolls)</option>
+                  <option value="1.4" selected>Moderate (2 daily park walks + play)</option>
+                  <option value="1.6">High (Agility, swimming, intense running)</option>
+                </select>
+              </div>
+
+              <div class="weather-tip-badge">
+                <span>🌡️</span>
+                <span id="calc-breed-note">Thick coat requires omega-rich proteins and high hydration, especially May through July.</span>
+              </div>
+            </div>
+
+            <!-- Live Computed Results -->
+            <div class="calc-result-box">
+              <div class="result-calorie-banner">
+                <span style="font-size: 0.82rem; font-weight: 700; color: var(--bark-muted); text-transform: uppercase;">Daily Energy Target</span>
+                <div class="result-calorie-number" id="calc-calories-display">1280</div>
+                <div class="result-calorie-unit">kcal / day calculated by Vet Algorithm</div>
+              </div>
+
+              <ul class="diet-breakdown-list">
+                <li>
+                  <span>Dry Kibble Equivalent:</span>
+                  <strong id="calc-kibble">333g / day</strong>
+                </li>
+                <li>
+                  <span>Home Protein (Chicken/Egg/Paneer):</span>
+                  <strong id="calc-protein">266g portion</strong>
+                </li>
+                <li>
+                  <span>Fresh Curd for Probiotics:</span>
+                  <strong id="calc-curd">168ml</strong>
+                </li>
+                <li>
+                  <span>Hydration Target (Summer):</span>
+                  <strong id="calc-water">1.8 Litres / day</strong>
+                </li>
+              </ul>
+
+              <div style="font-size: 0.76rem; color: var(--bark-muted); text-align: center;">
+                *Algorithmic recommendations reviewed by licensed canine nutritionists in India.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANS SECTION -->
+    <section class="plans-section" id="plans">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="pill-badge">
+            <span class="pulse-dot green"></span>
+            <span>Transparent Pricing</span>
+          </div>
+          <h2 class="section-title">Simple Plans. <span class="orange-text">Zero Hidden Traps.</span></h2>
+          <p class="section-desc">Choose the level of tracking your dog needs. No forced contracts or overseas billing.</p>
+        </div>
+
+        <div class="plans-grid">
+          <!-- Card 1: Core -->
+          <div class="plan-card" onclick="selectPlanAndScroll('Core')">
+            <div>
+              <div class="plan-badge-row">
+                <span class="tag-badge" style="background-color: var(--cream); color: var(--bark-muted);">Everyday Essentials</span>
+                <span class="green-text font-bold" style="font-size: 0.8rem;">&#8377;0 Monthly Fee Ever</span>
+              </div>
+
+              <h3 class="plan-title">The Pet Theory Core</h3>
+              <p class="plan-desc">Ideal for gated societies, indoor dogs, and neighborhood walks.</p>
+
+              <div class="price-row">
+                <span class="price-val">&#8377;X,XXX</span>
+                <span class="price-tenure">one-time</span>
+              </div>
+              <p class="addon-fee-note green-text">Zero ongoing fees &bull; Bluetooth tracking, activity monitoring, diet plan</p>
+
+              <ul class="plan-features-list">
+                <li><span>&#10003;</span> <span><strong>Bluetooth tracking:</strong> Proximity radar up to 80 meters</span></li>
+                <li><span>&#10003;</span> <span><strong>Activity monitoring:</strong> Daily play, sleep &amp; rest tracking</span></li>
+                <li><span>&#10003;</span> <span><strong>Diet plan:</strong> Breed- &amp; weight-customized vet nutrition guidance</span></li>
+                <li><span>&#10003;</span> <span>45-day rechargeable battery life with heat-safe cell</span></li>
+                <li><span>&#10003;</span> <span>IP68 waterproof aluminum core &amp; custom engraved name tag</span></li>
+              </ul>
+            </div>
+
+            <button type="button" class="btn btn-secondary btn-block btn-lg" onclick="selectPlanAndScroll('Core')">
+              Reserve Core Spot &rarr;
+            </button>
+          </div>
+
+          <!-- Card 2: Live -->
+          <div class="plan-card plan-live" onclick="selectPlanAndScroll('Live')">
+            <div class="popular-ribbon">⭐ MOST POPULAR</div>
+
+            <div>
+              <div class="plan-badge-row">
+                <span class="tag-badge orange">Total Freedom &amp; Security</span>
+                <span class="orange-text font-bold" style="font-size: 0.8rem;">Live Pan-India GPS</span>
+              </div>
+
+              <h3 class="plan-title">The Pet Theory Live</h3>
+              <p class="plan-desc">For adventurous dogs, escape artists, and true peace of mind anywhere in India.</p>
+
+              <div class="price-row">
+                <span class="price-val orange">&#8377;X,XXX</span>
+                <span class="price-tenure">one-time</span>
+              </div>
+              <p class="addon-fee-note orange-text">+ small monthly add-on (&#8377;99/mo) &bull; adds live GPS and escape alerts</p>
+
+              <ul class="plan-features-list">
+                <li><span>&#10003;</span> <span><strong>Everything in Core, plus:</strong></span></li>
+                <li><span>&#10003;</span> <span><strong>Live GPS tracking:</strong> Real-time pinpoint satellite location updates</span></li>
+                <li><span>&#10003;</span> <span><strong>Instant escape alerts:</strong> Instant phone notifications if dog leaves safe zones</span></li>
+                <li><span>&#10003;</span> <span>Airtel / Jio IoT eSIM embedded (active right out of the box)</span></li>
+                <li><span>&#10003;</span> <span>Emergency night safety LED control via phone app</span></li>
+              </ul>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-block btn-lg" onclick="selectPlanAndScroll('Live')">
+              Reserve Live Spot &rarr;
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOR VETS & BREEDERS BANNER -->
+    <section class="vets-section" id="vets">
+      <div class="container">
+        <div class="vets-banner">
+          <div class="vets-banner-content">
+            <div class="pill-badge" style="background: rgba(255,255,255,0.18); border-color: rgba(255,255,255,0.3); color: #fff;">
+              <span>🩺 For Vets &amp; Certified Breeders</span>
+            </div>
+            <h2>Recommend The Pet Theory at the point your customers trust most.</h2>
+            <p>
+              Equip your clinic or kennel with demo units, client nutrition portals, and priority clinical partner margins. Help pet parents get genuine Indian climate safety from day one.
+            </p>
+            <div class="vets-cta-row">
+              <button type="button" class="btn btn-secondary btn-lg open-partner-modal">
+                Register as a Partner &rarr;
+              </button>
+              <span style="font-size: 0.85rem; color: #E0EFE7;">&#10003; Special sample clinical kit &bull; 120+ active clinic partners</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WAITLIST EMAIL SIGNUP SECTION -->
+    <section class="waitlist-section" id="waitlist">
+      <div class="container">
+        <div class="waitlist-card">
+          
+          <div class="waitlist-header">
+            <div class="pill-badge">
+              <span class="pulse-dot orange"></span>
+              <span>Batch #1 Limited to 500 Collars Across India</span>
+            </div>
+            <h2 class="waitlist-title">Be First In Line.</h2>
+            <p class="waitlist-sub">Lock in early-bird priority pricing and complimentary first-year diet formulation access for your pup.</p>
+          </div>
+
+          <div id="waitlist-form-wrap">
+            <!-- Plan Selector Tabs -->
+            <div class="plan-switch-tabs">
+              <button type="button" class="tab-btn" id="tab-plan-core">The Pet Theory Core (&#8377;X,XXX)</button>
+              <button type="button" class="tab-btn active" id="tab-plan-live">The Pet Theory Live (&#8377;X,XXX)</button>
+            </div>
+
+            <form class="waitlist-form" onsubmit="handleWaitlistSubmit(event)">
+              <div class="form-row-2">
+                <input type="text" id="wl-name" placeholder="Your Name" class="form-input" required>
+                <input type="text" id="wl-dog-name" placeholder="Dog's Name (e.g. Buddy, Bruno, Bella)" class="form-input">
+              </div>
+
+              <div class="form-row-2">
+                <input type="tel" id="wl-phone" placeholder="Ph. No." class="form-input" required>
+                <input type="email" id="wl-email" placeholder="Email ID" class="form-input" required>
+              </div>
+
+              <div>
+                <div id="wl-error" class="form-error-msg"></div>
+              </div>
+
+              <button type="submit" id="wl-submit-btn" class="btn btn-primary btn-block btn-lg">
+                Join Priority Waitlist &rarr;
+              </button>
+
+              <p class="form-privacy-note">
+                🛡️ Strictly zero spam. We only notify you when batch shipping commences in your city.
+              </p>
+            </form>
+          </div>
+
+          <!-- Success State -->
+          <div id="waitlist-success-wrap" class="waitlist-success-view">
+            <div class="success-check-circle">&#10003;</div>
+            <h3 style="font-size: 2.2rem; color: var(--bark);">You're On The Priority List!</h3>
+            <p style="font-size: 1.05rem; color: var(--bark-muted); margin-top: 0.65rem;">
+              We've locked in spot for <strong class="orange-text" id="success-dog-name">your dog</strong> on the <strong id="success-plan-display">The Pet Theory Live</strong> edition.
+            </p>
+            <div class="success-badge-email" id="success-email-display">user@example.com</div>
+            <div>
+              <button type="button" class="btn btn-secondary" onclick="resetWaitlist()">Register another pet &rarr;</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION SECTION -->
+    <section class="faq-section" id="faq">
+      <div class="container">
+        <div class="section-title-wrap">
+          <div class="pill-badge">
+            <span>Honest Answers</span>
+          </div>
+          <h2 class="section-title">Frequently Asked <span class="orange-text">Questions</span></h2>
+          <p class="section-desc">Straight answers to what matters most for you and your dog.</p>
+        </div>
+
+        <div class="faq-list">
+          <!-- FAQ 1 -->
+          <div class="faq-card open">
+            <button type="button" class="faq-trigger" aria-expanded="true">
+              <span class="faq-q-text">Do I have to pay a subscription?</span>
+              <span class="faq-tag">Transparent Billing</span>
+              <span class="faq-chevron">&darr;</span>
+            </button>
+            <div class="faq-answer">
+              No for Core, and only an honest bare-minimum cost for Live. The Pet Theory Core (&#8377;X,XXX) has &#8377;0 subscription for life, Bluetooth range tracking, daily activity monitoring, and vet diet tools are completely free forever. The Pet Theory Live (&#8377;X,XXX) includes GPS tracking with an integrated eSIM.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-card">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-q-text">Is the diet guidance vet-reviewed?</span>
+              <span class="faq-tag">100% Vet-Formulated</span>
+              <span class="faq-chevron">&darr;</span>
+            </button>
+            <div class="faq-answer">
+              Yes, 100%. Our dietary engine was formulated in collaboration with board-certified Indian veterinary nutritionists. Unlike Western dog apps that only calculate commercial corn kibble grams, our system understands Indian home-cooked staples (boiled eggs, curd, paneer, pumpkin, chicken, rice) alongside packaged pet foods, adjusting exact caloric and hydration needs based on your dog's breed, actual collar activity, and the current local weather.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-card">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-q-text">How long does the battery last and how do I recharge it?</span>
+              <span class="faq-tag">45-Day Life</span>
+              <span class="faq-chevron">&darr;</span>
+            </button>
+            <div class="faq-answer">
+              The Pet Theory features an ultra-efficient smart sleep accelerometer that extends battery life up to 45 days on Core and up to 30 days on Live (with active GPS). It charges via a magnetic snap-on USB cable (included) in under 90 minutes. You don't even have to take the collar off your dog to snap the charger on.
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-card">
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span class="faq-q-text">Will it fit my Indie dog or large Golden Retriever?</span>
+              <span class="faq-tag">Universal Sizes</span>
+              <span class="faq-chevron">&darr;</span>
+            </button>
+            <div class="faq-answer">
+              Yes! The collar is available in Small (25–38 cm neck), Medium (35–52 cm neck), and Large (48–68 cm neck). The reinforced nylon strap has a contoured slide adjuster that lets you fine-tune the fit perfectly.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SITE FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="brand-link">
+            <img src="assets/logo.png" alt="The Pet Theory Logo" class="brand-logo-img">
+            <div class="brand-text-block">
+              <span class="brand-name">the pet <span class="script">Theory</span></span>
+              <span class="brand-tagline">Engineered for India</span>
+            </div>
+          </a>
+          <p>
+            Smart dog collars engineered specifically for Indian temperatures, Indian telecoms, and Indian pet diets.
+          </p>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#the-collar">The Collar</a></li>
+            <li><a href="#why-india">Why India</a></li>
+            <li><a href="#vet-diet">Diet Engine</a></li>
+            <li><a href="#plans">Plans &amp; Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Professionals</h4>
+          <ul>
+            <li><a href="#vets" class="open-partner-modal">For Vets</a></li>
+            <li><a href="#vets" class="open-partner-modal">For Breeders</a></li>
+            <li><a href="#vets" class="open-partner-modal">Clinic Portals</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Support &amp; FAQ</h4>
+          <ul>
+            <li><a href="#faq">Subscription FAQ</a></li>
+            <li><a href="#faq">Heat Testing Details</a></li>
+            <li><a href="#waitlist">Batch #1 Status</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 The Pet Theory. All rights reserved. Built for India, not imported to it.</p>
+        <p>Crafted with &#10084;&#65039; for Indian dogs &amp; pet parents &bull; BIS Compliant Hardware</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PARTNER REGISTRATION MODAL -->
+  <div class="modal-overlay" id="partner-modal" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Close Modal">&times;</button>
+      
+      <div id="partner-form-inner">
+        <div class="pill-badge" style="margin-bottom: 0.75rem;">
+          <span>Veterinary Partnership</span>
+        </div>
+        <h3 style="font-size: 1.6rem; color: var(--bark);">Register as a Clinical Partner</h3>
+        <p style="font-size: 0.9rem; color: var(--bark-muted); margin-top: 0.35rem; margin-bottom: 1.5rem;">
+          Join 120+ veterinary clinics across Delhi-NCR, Mumbai, and Bengaluru partnering with The Pet Theory.
+        </p>
+
+        <form id="partner-form" style="display: flex; flex-direction: column; gap: 1rem;">
+          <div>
+            <label class="input-label">Clinic / Kennel Name *</label>
+            <input type="text" required placeholder="e.g. Apex Pet Hospital" class="form-input" id="p-clinic">
+          </div>
+          <div>
+            <label class="input-label">Doctor / Representative Email *</label>
+            <input type="email" required placeholder="doctor@apexpet.in" class="form-input" id="p-email">
+          </div>
+          <div>
+            <label class="input-label">City *</label>
+            <input type="text" required placeholder="Bengaluru / Mumbai / Delhi" class="form-input" id="p-city">
+          </div>
+
+          <button type="submit" class="btn btn-forest btn-block btn-lg" style="margin-top: 0.5rem;">
+            Submit Clinical Application &rarr;
+          </button>
+        </form>
+      </div>
+
+      <div id="partner-success-box" style="display: none; text-align: center; padding: 2rem 0;">
+        <div class="success-check-circle" style="width: 65px; height: 65px; font-size: 32px;">&#10003;</div>
+        <h3 style="font-size: 1.5rem; color: var(--bark);">Application Received!</h3>
+        <p style="font-size: 0.95rem; color: var(--bark-muted); margin-top: 0.5rem;">
+          Our clinical lead will contact your clinic within 24 business hours.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript -->
+  <script src="app.js"></script>
+</body>
+</html>
