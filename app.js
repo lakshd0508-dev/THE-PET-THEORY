@@ -1,4 +1,3 @@
-
 /**
  * THE PET THEORY - INTERACTIVE VIBE CODED SCRIPTS
  */
@@ -403,8 +402,70 @@ function initPartnerModal() {
   });
 
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      const clinicInput = document.getElementById('p-clinic');
+      const emailInput = document.getElementById('p-email');
+      const cityInput = document.getElementById('p-city');
+      const errorMsg = document.getElementById('p-error');
+      const submitBtn = document.getElementById('partner-submit-btn');
+
+      const clinicName = clinicInput ? clinicInput.value.trim() : '';
+      const email = emailInput ? emailInput.value.trim() : '';
+      const city = cityInput ? cityInput.value.trim() : '';
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      [clinicInput, emailInput, cityInput].forEach(el => el && el.classList.remove('error'));
+
+      if (!clinicName) {
+        if (errorMsg) { errorMsg.textContent = 'Please enter the clinic or kennel name.'; errorMsg.style.display = 'block'; }
+        if (clinicInput) clinicInput.classList.add('error');
+        return;
+      }
+      if (!email || !emailRegex.test(email)) {
+        if (errorMsg) { errorMsg.textContent = 'Please enter a valid email address.'; errorMsg.style.display = 'block'; }
+        if (emailInput) emailInput.classList.add('error');
+        return;
+      }
+      if (!city) {
+        if (errorMsg) { errorMsg.textContent = 'Please enter the city.'; errorMsg.style.display = 'block'; }
+        if (cityInput) cityInput.classList.add('error');
+        return;
+      }
+
+      if (errorMsg) errorMsg.style.display = 'none';
+
+      if (submitBtn) {
+        submitBtn.textContent = 'Submitting...';
+        submitBtn.disabled = true;
+      }
+
+      if (!supabaseClient) {
+        console.error('Supabase client not initialized');
+        if (errorMsg) { errorMsg.textContent = 'Something went wrong. Please try again in a moment.'; errorMsg.style.display = 'block'; }
+        if (submitBtn) { submitBtn.textContent = 'Submit Clinical Application \u2192'; submitBtn.disabled = false; }
+        return;
+      }
+
+      try {
+        const { error } = await supabaseClient.from('partner_signups').insert([{
+          clinic_name: clinicName,
+          email,
+          city
+        }]);
+        if (error) throw error;
+      } catch (err) {
+        console.error('Supabase partner insert failed:', err);
+        let message = 'Something went wrong submitting your application. Please try again.';
+        if (err && err.code === '23505') {
+          message = 'This clinic email has already been registered.';
+        }
+        if (errorMsg) { errorMsg.textContent = message; errorMsg.style.display = 'block'; }
+        if (submitBtn) { submitBtn.textContent = 'Submit Clinical Application \u2192'; submitBtn.disabled = false; }
+        return;
+      }
+
       document.getElementById('partner-form-inner').style.display = 'none';
       document.getElementById('partner-success-box').style.display = 'block';
     });
