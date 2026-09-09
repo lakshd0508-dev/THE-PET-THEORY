@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollProgress();
   initHeaderScroll();
   initHotspots();
-  initNutritionCalculator();
   initFaqAccordion();
   initMobileNav();
   initPlanSelectors();
@@ -88,71 +87,6 @@ function initHotspots() {
       }
     });
   });
-}
-
-/* 4. Interactive Breed Nutrition Calculator */
-const breedProfiles = {
-  "indie": { name: "Indie / Desi Dog", baseWeight: 22, factor: 1.4, note: "Naturally heat resilient. Thrives on balanced proteins, curd, and seasonal vegetables." },
-  "labrador": { name: "Labrador Retriever", baseWeight: 30, factor: 1.3, note: "Prone to obesity in Indian apartments. Keep carbs controlled and avoid table ghee." },
-  "golden": { name: "Golden Retriever", baseWeight: 28, factor: 1.4, note: "Thick coat requires omega-rich proteins and high hydration, especially May through July." },
-  "beagle": { name: "Beagle", baseWeight: 12, factor: 1.5, note: "High metabolic burn. Ensure adequate protein portions to prevent begging habits." },
-  "germanshepherd": { name: "German Shepherd", baseWeight: 34, factor: 1.4, note: "Sensitive digestive tract in monsoon. Stick to vet-cleared single protein sources." },
-  "shihtzu": { name: "Shih Tzu", baseWeight: 7, factor: 1.6, note: "Brachycephalic breed highly vulnerable to summer overheating. Feed cooling meals." }
-};
-
-function initNutritionCalculator() {
-  const breedSelect = document.getElementById('calc-breed');
-  const weightInput = document.getElementById('calc-weight');
-  const weightDisplay = document.getElementById('calc-weight-val');
-  const activitySelect = document.getElementById('calc-activity');
-
-  if (!breedSelect || !weightInput) return;
-
-  function updateCalc() {
-    const breedKey = breedSelect.value;
-    const profile = breedProfiles[breedKey] || breedProfiles["indie"];
-    const weight = parseFloat(weightInput.value) || profile.baseWeight;
-    if (weightDisplay) weightDisplay.textContent = weight + ' kg';
-
-    const activityMult = parseFloat(activitySelect.value) || 1.4;
-    // Standard Canine Resting Energy Requirement (RER): 70 * (weight ^ 0.75)
-    const rer = 70 * Math.pow(weight, 0.75);
-    const totalCalories = Math.round(rer * activityMult);
-
-    // Portion recommendations
-    const kibbleGrams = Math.round(totalCalories * 0.26);
-    const homeProteinGrams = Math.round(weight * 9.5);
-    const curdMl = Math.round(weight * 6);
-    const waterLiters = (weight * 0.065).toFixed(1);
-
-    const calDisplay = document.getElementById('calc-calories-display');
-    if (calDisplay) calDisplay.textContent = totalCalories;
-
-    const kibbleEl = document.getElementById('calc-kibble');
-    const proteinEl = document.getElementById('calc-protein');
-    const curdEl = document.getElementById('calc-curd');
-    const waterEl = document.getElementById('calc-water');
-    const noteEl = document.getElementById('calc-breed-note');
-
-    if (kibbleEl) kibbleEl.textContent = kibbleGrams + 'g / day';
-    if (proteinEl) proteinEl.textContent = homeProteinGrams + 'g (boiled chicken/egg/paneer)';
-    if (curdEl) curdEl.textContent = curdMl + 'ml fresh curd';
-    if (waterEl) waterEl.textContent = waterLiters + ' Litres / day';
-    if (noteEl) noteEl.textContent = profile.note;
-  }
-
-  breedSelect.addEventListener('change', () => {
-    const selected = breedProfiles[breedSelect.value];
-    if (selected) {
-      weightInput.value = selected.baseWeight;
-    }
-    updateCalc();
-  });
-
-  weightInput.addEventListener('input', updateCalc);
-  activitySelect.addEventListener('change', updateCalc);
-
-  updateCalc();
 }
 
 /* 5. FAQ Accordion */
