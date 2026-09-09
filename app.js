@@ -63,7 +63,7 @@ const hotspotData = {
   },
   tag: {
     title: "🏷️ Laser-Etched ID Tag",
-    desc: "A tag with your dog's name, built to outlast daily wear. A low-tech backup to the GPS tracker — if the collar's ever lost or the battery dies, anyone who finds your dog can still reach you."
+    desc: "A tag with your pet's name, built to outlast daily wear. A low-tech backup to the GPS tracker — if the collar's ever lost or the battery dies, anyone who finds your pet can still reach you."
   },
   buckle: {
     title: "🔒 Quick-Release Safety Buckle",
