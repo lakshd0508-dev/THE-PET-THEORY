@@ -460,6 +460,11 @@
                 <input type="email" id="wl-email" placeholder="Email ID" class="form-input" required>
               </div>
 
+              <!-- Honeypot: hidden from real users, bots tend to fill every field they find -->
+              <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+                <input type="text" id="wl-website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+
               <div>
                 <div id="wl-error" class="form-error-msg"></div>
               </div>
@@ -636,7 +641,9 @@
             <input type="text" required placeholder="Bengaluru / Mumbai / Delhi" class="form-input" id="p-city">
           </div>
 
-          <button type="submit" class="btn btn-forest btn-block btn-lg" style="margin-top: 0.5rem;">
+          <div id="p-error" class="form-error-msg" style="display:none;"></div>
+
+          <button type="submit" class="btn btn-forest btn-block btn-lg" style="margin-top: 0.5rem;" id="partner-submit-btn">
             Submit Clinical Application &rarr;
           </button>
         </form>
