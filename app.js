@@ -227,7 +227,7 @@ async function handleWaitlistSubmit(event) {
     submitBtn.disabled = true;
   }
 
-  const dogName = dogNameInput ? dogNameInput.value.trim() : 'Your Dog';
+  const dogName = dogNameInput ? dogNameInput.value.trim() : 'Your Pet';
 
   if (!supabaseClient) {
     console.error('Supabase client not initialized — check the CDN script tag and credentials in app.js');
@@ -281,7 +281,7 @@ async function handleWaitlistSubmit(event) {
   const regEmail = document.getElementById('success-email-display');
   const regPlan = document.getElementById('success-plan-display');
 
-  if (regName) regName.textContent = dogName || 'your dog';
+  if (regName) regName.textContent = dogName || 'your pet';
   if (regEmail) regEmail.textContent = email;
   if (regPlan) regPlan.textContent = currentSelectedPlan;
 
